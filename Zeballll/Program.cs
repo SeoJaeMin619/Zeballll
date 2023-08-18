@@ -10,13 +10,14 @@ class Program
             Setting();
             Intro();
         }
-
+ 
         static void Setting()
         {
             // 캐릭터 정보 세팅
             player = new Character("Jamnini", "돚거", 279, 2763, 37, 420, 1000);
 
             // 아이템 정보 세팅
+
         }
 
         static void Intro()
@@ -30,14 +31,21 @@ class Program
             Console.WriteLine("2. 인벤토리");
             Console.WriteLine();
             Console.WriteLine("원하시는 행동을 입력해주세요.");
+
+        }
+        static void Info()
+        //캐릭터 정보창
+        {
+            Console.WriteLine();
+            Console.WriteLine("체력")
         }
 
-    public void Character()
-    //왜 캐릭터 인식을 못하지 . . .???
+    class Character()
+    //인식하지만 이름이랑 직업등등 인식을 못하는 중
     { 
         public string Name { get; }
         public string Job { get; }
-        public int Level { get; }
+        public int Level { get; } 
         public int Atk { get; }
         public int Def { get; }
         public int Hp { get; }
@@ -45,12 +53,7 @@ class Program
     }
 }
 
-    //인트로 클래스
-    //캐릭정보창을 갈수있게 하자
-
-    //캐릭정보창 클래스
-
-    //강화(?) 클래스
+    
 
 
 
