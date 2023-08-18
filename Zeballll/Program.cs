@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System;
 
-class Program
+class Game
 {
     private static Character player;
 
