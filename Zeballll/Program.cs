@@ -25,10 +25,11 @@
         Console.WriteLine();
         Console.WriteLine("1. 상태보기");
         Console.WriteLine("2. 인벤토리");
+        Console.WriteLine("3. 상점가기");
         Console.WriteLine();
         Console.WriteLine("원하시는 행동을 입력해주세요.");
 
-        int input = CheckValidInput(1, 2);
+         int input = CheckValidInput(1, 2, 3);
         switch (input)
         {
             case 1:
@@ -36,7 +37,11 @@
                 break;
 
             case 2:
-                // 작업해보기
+                Inventory();
+                break;
+
+            case 3:
+                Shop();
                 break;
         }
     }
@@ -66,22 +71,48 @@
         }
     }
 
-    static void DisplayInventory()
+    static void Inventory()
     {
+        Console.Clear();
+        Console.WriteLine("제네시스 가즈");
+        Console.WriteLine("파사부");
+        Console.WriteLine();
+        Console.WriteLine("0. 나가기");
 
+        int input = CheckValidInput(0, 0);
+        switch (input)
+        {
+            case 0:
+                Intro();
+                break;
+        }
+    }
+    static void Shop()
+    {
+        Console.Clear();
+        Console.WriteLine("리스트레인트링");
+        Console.WriteLine();
+        Console.WriteLine("0. 나가기");
+
+        int input = CheckValidInput(0, 0);
+        switch (input)
+        {
+            case 0:
+                Intro();
+                break;
+        }
     }
 
-    static int CheckValidInput(int min, int max)
+    static int CheckValidInput(params int[] validChoices)
     {
         while (true)
         {
             string input = Console.ReadLine();
 
             bool parseSuccess = int.TryParse(input, out var ret);
-            if (parseSuccess)
+            if (parseSuccess && validChoices.Contains(ret))
             {
-                if (ret >= min && ret <= max)
-                    return ret;
+                return ret;
             }
 
             Console.WriteLine("잘못된 입력입니다.");
