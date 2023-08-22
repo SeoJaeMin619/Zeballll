@@ -29,7 +29,7 @@
         Console.WriteLine();
         Console.WriteLine("원하시는 행동을 입력해주세요.");
 
-         int input = CheckValidInput(1, 2, 3);
+        int input = CheckValidInput(1, 2, 3);
         switch (input)
         {
             case 1:
@@ -91,20 +91,50 @@
     {
         Console.Clear();
         Console.WriteLine("상점에 오신 것을 환영합니다");
-        Console.WriteLine("아래에 물품을 확인 할 수 있습니다");
-        Console.WriteLine();
-        Console.WriteLine("1. 리스트레인트링");
-        Console.WriteLine("2. 뇌전수리검");
+        Console.WriteLine("아래에 물품을 구매 할 수 있습니다");
+        Console.WriteLine("현재 소지액: " + player.Gold);
+        Console.WriteLine("1. 리스트레인트링. 100메소");
+        Console.WriteLine("2. 뇌전수리검. 150메소");
         Console.WriteLine();
         Console.WriteLine("0. 나가기");
 
-        int input = CheckValidInput(0, 0);
+        int input = CheckValidInput(0, 1, 2); 
         switch (input)
         {
             case 0:
                 Intro();
                 break;
+            case 1:
+                BuyItem("리스트레인트링", 100); 
+                break;
+            case 2:
+                BuyItem("뇌전수리검", 150); 
+                break;
         }
+    }
+
+    static void BuyItem(string itemName, int itemPrice)
+    {
+        if (player.Gold >= itemPrice)
+        {
+            player.ModifyGold(-itemPrice);
+            Console.WriteLine(itemName + "을(를) 구매했습니다.");
+            Console.WriteLine("남은 소지액: " + player.Gold);
+        }
+        else
+        {
+            Console.WriteLine("소지금이 부족합니다.");
+        }
+
+            Console.WriteLine("0. 나가기");
+
+            int input = CheckValidInput(0, 1, 2);
+            switch (input)
+            {
+                case 0:
+                    Intro();
+                    break;
+            }
     }
 
     static int CheckValidInput(params int[] validChoices)
@@ -133,7 +163,7 @@ public class Character
     public int Atk { get; }
     public int Def { get; }
     public int Hp { get; }
-    public int Gold { get; }
+    public int Gold { get; private set; }
 
     public Character(string name, string job, int level, int atk, int def, int hp, int gold)
     {
@@ -144,5 +174,10 @@ public class Character
         Def = def;
         Hp = hp;
         Gold = gold;
+    }
+
+    public void ModifyGold(int amount)
+    {
+        Gold += amount;
     }
 }
