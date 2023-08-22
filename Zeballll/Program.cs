@@ -90,7 +90,11 @@
     static void Shop()
     {
         Console.Clear();
-        Console.WriteLine("리스트레인트링");
+        Console.WriteLine("상점에 오신 것을 환영합니다");
+        Console.WriteLine("아래에 물품을 확인 할 수 있습니다");
+        Console.WriteLine();
+        Console.WriteLine("1. 리스트레인트링");
+        Console.WriteLine("2. 뇌전수리검");
         Console.WriteLine();
         Console.WriteLine("0. 나가기");
 
