@@ -128,7 +128,7 @@
 
             Console.WriteLine("0. 나가기");
 
-            int input = CheckValidInput(0, 1, 2);
+            int input = CheckValidInput(0, 0);
             switch (input)
             {
                 case 0:
